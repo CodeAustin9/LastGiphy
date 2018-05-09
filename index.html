@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Animal Giphy</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+ 
+  <div class = "container">
+        <!--jumbotron -->
+        <div class= "container">
+          <div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                  <h1 class="display-4 text-center"><strong>Animal Giphy Search</strong></h1>
+              </div>
+  </div>
+  <div id class="row">
+  <div id="animals-buttons">
+  
+    <button data-animal="dog" class="btn-btn-animal">dog</button>
+    <button data-animal="skunk" class="btn-btn-animal">skunk</button>
+    <button data-animal="giraffe" class="btn-btn-animal">giraffe</button>
+    <button data-animal="octopus" class="btn-btn-animal">octopus</button>
+    </div>
+    <!-- **************************************** -->
+    <div class="row">
+      <div class="column">
+      <div id="gifs-appear-here"> 
+      </div>
+   <!--The gifs will be prepended to the already existing list of gifs-->
+  </div>
+  <form id="animal-form">
+    <label for="animal-input">Search for an Animal</label>
+    <input type="text" id="animal-input">
+    <br>
+    <input id="add-animal" type="submit" value="Search">
+  </form>
+ </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script type="text/javascript" src="giphytastic/javascript/giphy.js"></script>
+ 
+
+</body>
+
+</html>
