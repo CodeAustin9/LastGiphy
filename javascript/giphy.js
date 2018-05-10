@@ -3,7 +3,12 @@ $(document).ready(function () {
   var animal = $(this).attr("data-animal");
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     animal + "&api_key=dHWA4xaK8RoKsGZaoaS3ZssGZzx7V7VR&limit=25&rating=g";
-
+var animals = [
+   "dog", "cat", "rabbit", "hamster", "skunk", "goldfish",
+   "bird", "ferret", "turtle", "sugar glider", "chinchilla",
+   "hedgehog", "hermit crab", "gerbil", "pygmy goat", "chicken",
+   "capybara", "teacup pig", "serval", "salamander", "frog"
+ ];
   // Performing an AJAX request with the queryURL
   $.ajax({
     url: queryURL,
@@ -14,6 +19,7 @@ $(document).ready(function () {
     .done(function (response) {
       console.log(response);
       var results = response.data;
+
 
       for (var i = 0; i < animals.length; i++) {
         var animalDiv = $("<div>");
@@ -27,18 +33,7 @@ $(document).ready(function () {
         animalImage.attr("src", results[i].images.fixed_height.url);
         animalDiv.append(p);
         // ---------------------------------------------------------
-        function renderButtons() {
-          $("#animal-button").empty();
-          // Then dynamicaly generating buttons for each giphy in the array
-          // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-          var a = $("<button>");
-          // Adding a class of animal-btn to our button
-          // Adding a data-attribute
-          // Providing the initial button text
-          animalImage.text(animals[i]);
-          // Adding the button to the buttons-view div
-          $("#animals-view").append(a);
-        }
+        
       }
 
       // This function handles events where a animal button is clicked
@@ -55,7 +50,7 @@ $(document).ready(function () {
       });
 
       // Adding a click event listener to all elements with a class of "movie-btn"
-      $(document).on("click", ".animal-btn", displayAnimal);
+      // $(document).on("click", ".animal-btn", displayAnimal);
 
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
@@ -83,4 +78,18 @@ $(document).ready(function () {
 
       // var animals = ["cat", "dog", "whale", "shark", "sloth", "tazmanian devil", "owl", "falcon", "snake", "hamster", "gerbil", "anteater", "mongoose", "bird", "goose"]
 
-  
+    })//END OF AJAX CALL
+
+    function renderButtons() {
+      $("#animals-buttons").empty();
+     for (let index = 0; index < animals.length; index++) {
+      var buttonTemplate = $(`
+        <button class="btn btn-animal" id="${animals[index]}">${animals[index]}</button>
+      `);
+
+      $("#animals-buttons").append(buttonTemplate);  
+     }
+    }
+    renderButtons();
+
+  });
